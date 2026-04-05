@@ -2,9 +2,13 @@
 
 import sys
 import csv
+import tempfile
+import matplotlib as plt
+from pyutils.fileSplit import splitTextfileByBlankLines
 
-with open(sys.argv[1]) as csvfile:
-    csv_reader_object=csv.reader(csvfile, delimiter=',')
-    print(csv_reader_object)
+csvContent=splitTextfileByBlankLines(sys.argv[1])
+
+for element in csvContent:
+  print(element)
 
 
