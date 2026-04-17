@@ -8,7 +8,8 @@ class Dldata():
     self.time=list()
     self.snr=list()
     self.audiook=list()
-    self.doppler=list() 
+    self.doppler=list()
+    self.delay=list() 
     for line in csvdata.splitlines():
       dta=line.split(',') 
       self.date.append(dta[1])
@@ -16,6 +17,7 @@ class Dldata():
       self.snr.append(dta[3])
       self.audiook.append(dta[8])
       self.doppler.append(dta[9])
+      self.delay.append(dta[10])
     
     self.headerData=txtdata
 
@@ -38,6 +40,10 @@ class Dldata():
   @property
   def getDoppler(self):
     return self.doppler
+
+  @property
+  def getDelay(self):
+    return self.delay
 
   @property
   def getHeader(self):
