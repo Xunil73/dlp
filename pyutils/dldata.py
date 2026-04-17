@@ -2,7 +2,7 @@
 
 import csv
 
-class dldata():
+class Dldata():
   def __init__(self, csvdata, txtdata):
     self.date=list()
     self.time=list()
