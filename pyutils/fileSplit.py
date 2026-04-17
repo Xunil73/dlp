@@ -23,9 +23,12 @@ def splitTextfileByBlankLines(file):
 
   newContents=[]
   for element in parts:
-    newContents.append('\n'.join(element))
+    if element != []:
+      newContents.append('\n'.join(element))
 
   return newContents
+
+
 
 # diese Funktion extrahiert aus der Textfile von DreamLog (mit mehreren Logs)
 # alle Werte und speichert diese in ein Dictionary ab.
