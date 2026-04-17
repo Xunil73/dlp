@@ -4,29 +4,30 @@
 # Rückgabewert: eine Liste mit den einzelnen Logs 
 def splitTextfileByBlankLines(file):
 
-  with open(file, 'r') as f:
-    content=f.read()
+  with open(file, 'r') as f: 
+    content=f.read() # wir lesen die Datei so wie sie ist in die Variable content ein.
     f.close()
-    content_list=content.splitlines()
+    content_list=content.splitlines() #hier bekommen wir die Datei in einer Liste mit Zeilen:
+                    # so: ['Zeile1', 'das ist Zeile 2', 'zeile3']
 
 
   part=[]  # collects ONE related data set
   parts=[] # collects the different data sets,
            # including empty entries that result from blank lines in the source file
-  for element in content_list:
-    if element == '':
-      parts.append(part)
-      part=[]
+  for element in content_list: # hier gehen wir Zeile für Zeile durch die Datei
+    if element == '': # wenn eine Leerzeile in der CSV steht taucht sie als leeres Element in 
+      parts.append(part) # unserer Liste auf. Das bedeutet automatisch: hier beginnt ein neues Log.
+      part=[] # ...und wir fangen von Null an interessante Zeilen zu sammeln.
     else:
-      part.append(element)
-  parts.remove([])
+      part.append(element) # ist es keine Leerzeile ist es eine die wir brauchen und sammeln sie in die Liste ein.
+  parts.remove([]) # wenn alles fertig ist entfernen wir leere Einträge die durch Leerzeichen entstanden.
 
-  newContents=[]
-  for element in parts:
+  newContents=[] # wir wollen eine Liste haben mit allen Logs, aufgetrennt nach Log und in Textform
+  for element in parts: # wir durchforsten alle Logs 
     if element != []:
-      newContents.append('\n'.join(element))
+      newContents.append('\n'.join(element)) # und bauen schliesslich alles wieder zu einem Textstring zusammen.
 
-  return newContents
+  return newContents # den Textstring (inclusive Zeilenumbruchzeichen) geben wir dem Aufrufer zurück
 
 
 
