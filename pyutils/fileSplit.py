@@ -9,6 +9,13 @@ def splitTextfileByBlankLines(file):
     f.close()
     content_list=content.splitlines()
 
+  # wir schneiden hier die Headerzeilen der CSV-Datei(en) ab
+  # hier müssen wir Einträge die mit 'FREQ' anfangen aus der Liste löschen...
+  removeContent = [x for x in content_list if x.startswith('FREQ')]
+  for i in removeContent:
+    if i in content_list:
+      content_list.remove(i)
+
 
   part=[]  # collects ONE related data set
   parts=[] # collects the different data sets,
